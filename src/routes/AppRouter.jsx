@@ -12,10 +12,10 @@ const guestRouter = createBrowserRouter([
 			<Header />
 			<Outlet />
 		</>,
-		errorElement: <Navigate to='/' />,
 		children: [
 			{ index: true, element: <LoginForm /> },
 			{ path: '/register', element: <RegisterForm/> },
+			{ path: '*', element: <Navigate to='/' />}
 		]
 	}
 ])
@@ -26,10 +26,10 @@ const userRouter = createBrowserRouter([
 			<Header />
 			<Outlet />
 		</>,
-		errorElement: <Navigate to='/' />,
 		children: [
 			{ index: true, element: <UserHome /> },
-			{ path: '/newtodo', element: <p>New Todo</p>},
+			{ path: 'newtodo', element: <p>New Todo</p>},
+			{ path: '*', element: <Navigate to='/' />}
 		]
 	}
 ])
