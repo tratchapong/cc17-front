@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
 export default function RegisterForm() {
@@ -8,6 +9,8 @@ export default function RegisterForm() {
 		confirmPassword: '',
 		email: ''
 	})
+
+	const navigate = useNavigate()
 
 	const hdlChange = e => {
 		setInput({...input, [e.target.name] : e.target.value})
@@ -22,7 +25,10 @@ export default function RegisterForm() {
 			}
 			// จัด input ส่ง api 
 			const rs = await axios.post('http://localhost:8889/auth/register',input)
-			console.log(rs)
+			if(rs.status === 200) {
+				alert('Register successful')
+			}
+			navigate('/')
 		} catch (err) {
 			console.log(err.message)
 		}
