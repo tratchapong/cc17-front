@@ -11,7 +11,7 @@ export default function TodoCard(props) {
 					</button>
 				</div>
 				<p>{item.title}</p>
-				<p>{item.dueDate}</p>
+				<p>{new Date(item.dueDate).toDateString()}</p>
 				<p>{item.status}</p>
 			</div>
 		</div>
